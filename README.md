@@ -3,26 +3,27 @@
 linq11 is a header-only LINQ library for C++11 with minimal dependencies.
 It neatly integrates into the STL and takes advantage of C++11 features, mainly the range-based for loop.
 
-Example usage:
-
+_Example_:
 ```cpp
 #include <iostream>
 #include <string>
 #include <vector>
 #include "linq.h"
 
+using namespace std;
+
 struct Person
 {
-    std::string Name;
+    string Name;
     int Age;
 };
 
 int main()
 {
-    std::vector<Person> people = {
-        {"P1", 20},
-        {"P2", 21},
-        {"P3", 22}
+    vector<Person> people = {
+        { "P1", 20 },
+        { "P2", 21 },
+        { "P3", 22 }
     };
 
     auto query = linq::from(&people)
@@ -30,15 +31,15 @@ int main()
 
     for (const auto& p : query)
     {
-        std::cout << p.Name << ", " << p.Age << std::endl;
+        cout << p.Name << ", " << p.Age << endl;
     }
 
     return 0;
 }
 ```
 
+_Output_:
 ```
-Output:
 P2, 21
 P3, 22
 ```
