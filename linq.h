@@ -329,15 +329,13 @@ namespace linq
             order_by_range<TMy, TKeySelector> order_by(const TKeySelector& keySelector, sort_direction sortDir) const;
 
             template<typename TKeySelector>
-            inline auto order_by_ascending(const TKeySelector& keySelector) const
-                -> decltype(order_by<TKeySelector>(keySelector, linq::sort_direction::ascending))
+            inline order_by_range<TMy, TKeySelector> order_by_ascending(const TKeySelector& keySelector) const
             {
                 return order_by<TKeySelector>(keySelector, linq::sort_direction::ascending);
             }
 
             template<typename TKeySelector>
-            inline auto order_by_descending(const TKeySelector& keySelector) const
-                -> decltype(order_by<TKeySelector>(keySelector, linq::sort_direction::descending))
+            inline order_by_range<TMy, TKeySelector> order_by_descending(const TKeySelector& keySelector) const
             {
                 return order_by<TKeySelector>(keySelector, linq::sort_direction::descending);
             }
@@ -346,15 +344,13 @@ namespace linq
             then_by_range<TMy, TKeySelector> then_by(const TKeySelector& keySelector, sort_direction sortDir) const;
 
             template<typename TKeySelector>
-            inline auto then_by_ascending(const TKeySelector& keySelector) const
-                -> decltype(then_by<TKeySelector>(keySelector, linq::sort_direction::ascending))
+            inline then_by_range<TMy, TKeySelector> then_by_ascending(const TKeySelector& keySelector) const
             {
                 return then_by<TKeySelector>(keySelector, linq::sort_direction::ascending);
             }
 
             template<typename TKeySelector>
-            inline auto then_by_descending(const TKeySelector& keySelector) const
-                -> decltype(then_by<TKeySelector>(keySelector, linq::sort_direction::descending))
+            inline then_by_range<TMy, TKeySelector> then_by_descending(const TKeySelector& keySelector) const
             {
                 return then_by<TKeySelector>(keySelector, linq::sort_direction::descending);
             }
@@ -632,12 +628,12 @@ namespace linq
 
             inline iterator begin() const
             {
-                return iterator(Prev.begin(), Prev.end(), this);
+                return iterator(this, Prev.begin(), Prev.end());
             }
 
             inline iterator end() const
             {
-                return iterator(Prev.end(), Prev.end(), this);
+                return iterator(this, Prev.end(), Prev.end());
             }
 
         private:
