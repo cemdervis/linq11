@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Linq11 by cemdervis</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Linq11</h1>
+        <p>LINQ for C++11</p>
+
+        <p class="view"><a href="https://github.com/cemdervis/linq11">View the Project on GitHub <small>cemdervis/linq11</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/cemdervis/linq11/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/cemdervis/linq11/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/cemdervis/linq11">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="linq11---linq-for-c11" class="anchor" href="#linq11---linq-for-c11" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>linq11 - LINQ for C++11</h1>
+
+<p>linq11 is a header-only LINQ library for C++11 with minimal dependencies.
+It neatly integrates into the STL and takes advantage of C++11 features, mainly the range-based for loop and lambda functions.</p>
+
+<p><em>Example</em>:</p>
+
+<div class="highlight highlight-source-c++"><pre>#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>string<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>vector<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">"</span>linq.h<span class="pl-pds">"</span></span>
+
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">std</span><span class="pl-k">;</span>
+
+<span class="pl-k">struct</span> <span class="pl-en">Person</span>
+{
+    string Name;
+    <span class="pl-k">int</span> Age;
+};
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>()
+{
+    vector&lt;Person&gt; people = {
+        { <span class="pl-s"><span class="pl-pds">"</span>P1<span class="pl-pds">"</span></span>, <span class="pl-c1">20</span> },
+        { <span class="pl-s"><span class="pl-pds">"</span>P2<span class="pl-pds">"</span></span>, <span class="pl-c1">21</span> },
+        { <span class="pl-s"><span class="pl-pds">"</span>P3<span class="pl-pds">"</span></span>, <span class="pl-c1">22</span> }
+    };
+
+    <span class="pl-k">auto</span> query = <span class="pl-c1">linq::from</span>(&amp;people)
+        .<span class="pl-c1">where</span>([](<span class="pl-k">const</span> Person&amp; p) { <span class="pl-k">return</span> p.<span class="pl-smi">Age</span> &gt; <span class="pl-c1">20</span>; });
+
+    <span class="pl-k">for</span> (<span class="pl-k">const</span> <span class="pl-k">auto</span>&amp; p : query)
+    {
+        cout &lt;&lt; p.<span class="pl-smi">Name</span> &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>, <span class="pl-pds">"</span></span> &lt;&lt; p.<span class="pl-smi">Age</span> &lt;&lt; endl;
+    }
+
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}</pre></div>
+
+<p><em>Output</em>:</p>
+
+<pre><code>P2, 21
+P3, 22
+</code></pre>
+
+<p>linq11...</p>
+
+<ul>
+<li>resolves all type related functionality at compile-time; no virtual dispatch is used</li>
+<li>uses lazy evaluation, so your queries still work even after you modify the container it's based on</li>
+<li>is extremely efficient in the way it works with your data; it avoids making copies and passes by reference wherever it can</li>
+<li>does not maintain a flat list of operators in your query, but rather generates a linked-list at compile time</li>
+<li>does not use exceptions</li>
+<li>does not use boost or any other library</li>
+<li>works with everything that behaves like an STL container. So vector, maps, strings, ...</li>
+<li>tries to notify the user of errors at compile-time whenever it can (static_assert)</li>
+<li>is licensed under the MIT license</li>
+<li>uses the beloved dot operator!</li>
+</ul>
+
+<p>Please take a look at the <a href="https://github.com/cemdervis/linq11/wiki">Wiki</a> for the list of supported operators and their usage.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/cemdervis">cemdervis</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
