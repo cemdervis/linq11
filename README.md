@@ -32,9 +32,7 @@ int main()
         .where([](const Person& p) { return p.Age > 20; });
 
     for (const auto& p : query)
-    {
         cout << p.Name << ", " << p.Age << endl;
-    }
 
     return 0;
 }
