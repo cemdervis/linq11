@@ -52,7 +52,7 @@ linq11...
 - does not use exceptions
 - does not use boost or any other library
 - works with everything that behaves like an STL container. So vector, maps, strings, ...
-- tries to notify the user of errors at compile-time whenever it can (static_assert)
+- tries to notify the user of errors at compile-time whenever it can (`static_assert`)
 - is licensed under the MIT license
 - uses the beloved dot operator!
 
