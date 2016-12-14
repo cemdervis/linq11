@@ -58,4 +58,52 @@ linq11...
 - is licensed under the MIT license
 - uses the beloved dot operator!
 
-Please take a look at the [Wiki](https://github.com/cemdervis/linq11/wiki) for the list of supported operators and their usage.
+
+# Supported LINQ Operators
+
+- [Aggregate Operators](https://github.com/cemdervis/linq11/wiki/Aggregate-Operators)
+  - _[Aggregate](https://github.com/cemdervis/linq11/wiki/Aggregate-Operators#aggregate)_
+  - _[Average](https://github.com/cemdervis/linq11/wiki/Aggregate-Operators#average)_
+  - _[Count](https://github.com/cemdervis/linq11/wiki/Aggregate-Operators#count)_
+  - _[Max](https://github.com/cemdervis/linq11/wiki/Aggregate-Operators#max)_, _[Min](https://github.com/cemdervis/linq11/wiki/Aggregate-Operators#min)_
+  - _[Sum](https://github.com/cemdervis/linq11/wiki/Aggregate-Operators#sum)_
+
+- [Concatenation Operators](https://github.com/cemdervis/linq11/wiki/Concatenation-Operators)
+  - _[Append](https://github.com/cemdervis/linq11/wiki/Concatenation-Operators#append)_
+
+- [Element Operators](https://github.com/cemdervis/linq11/wiki/Element-Operators)
+  - _[Element At](https://github.com/cemdervis/linq11/wiki/Element-Operators#element-at)_
+  - _[First](https://github.com/cemdervis/linq11/wiki/Element-Operators#first)_, _[Last](https://github.com/cemdervis/linq11/wiki/Element-Operators#last)_
+
+- [Filter Operators](https://github.com/cemdervis/linq11/wiki/Filter-Operators)
+  - _[Where](https://github.com/cemdervis/linq11/wiki/Filter-Operators#where)_
+
+- [Generation Operators](https://github.com/cemdervis/linq11/wiki/Generation-Operators)
+  - _[From To](https://github.com/cemdervis/linq11/wiki/Generation-Operators#from-to)_
+  - _[Repeat](https://github.com/cemdervis/linq11/wiki/Generation-Operators#repeat)_
+  - _[Generate](https://github.com/cemdervis/linq11/wiki/Generation-Operators#generate)_
+
+- [Join Operators](https://github.com/cemdervis/linq11/wiki/Join-Operators)
+  - _[Join](https://github.com/cemdervis/linq11/wiki/Join-Operators)_
+
+- [Partition Operators](https://github.com/cemdervis/linq11/wiki/Partition-Operators)
+  - _[Skip](https://github.com/cemdervis/linq11/wiki/Partition-Operators#skip)_, _[Skip While](https://github.com/cemdervis/linq11/wiki/Partition-Operators#skip-while)_
+  - _[Take](https://github.com/cemdervis/linq11/wiki/Partition-Operators#take)_, _[Take While](https://github.com/cemdervis/linq11/wiki/Partition-Operators#take-while)_
+
+- [Projection Operators](https://github.com/cemdervis/linq11/wiki/Projection-Operators)
+  - _[Select](https://github.com/cemdervis/linq11/wiki/Projection-Operators#select)_
+  - _[Select Many](https://github.com/cemdervis/linq11/wiki/Projection-Operators#select-many)_
+
+- [Quantifier Operators](https://github.com/cemdervis/linq11/wiki/Quantifier-Operators)
+  - _[All](https://github.com/cemdervis/linq11/wiki/Quantifier-Operators#all)_
+  - _[Any](https://github.com/cemdervis/linq11/wiki/Quantifier-Operators#any)_
+
+- [Set Operators](https://github.com/cemdervis/linq11/wiki/Set-Operators)
+  - _[Distinct](https://github.com/cemdervis/linq11/wiki/Set-Operators#distinct)_
+
+- [Sorting Operators](https://github.com/cemdervis/linq11/wiki/Sorting-Operators)
+  - _[Order By](https://github.com/cemdervis/linq11/wiki/Sorting-Operators#order-by)_
+  - _[Then By](https://github.com/cemdervis/linq11/wiki/Sorting-Operators#then-by)_
+  - _[Reverse](https://github.com/cemdervis/linq11/wiki/Sorting-Operators#reverse)_
+
+
