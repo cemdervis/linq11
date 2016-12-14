@@ -1,35 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>linq11 by Cemalettin Dervis</title>
+    <meta name="description" content="Linq11 : LINQ for C++11">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Linq11</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Linq11</h1>
-        <p>LINQ for C++11</p>
 
-        <p class="view"><a href="https://github.com/cemdervis/linq11">View the Project on GitHub <small>cemdervis/linq11</small></a></p>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/cemdervis/linq11">View on GitHub</a>
 
+          <h1 id="project_title">Linq11</h1>
+          <h2 id="project_tagline">LINQ for C++11</h2>
 
-        <ul>
-          <li><a href="https://github.com/cemdervis/linq11/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/cemdervis/linq11/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/cemdervis/linq11">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/cemdervis/linq11/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/cemdervis/linq11/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
 <a id="linq11---linq-for-c11" class="anchor" href="#linq11---linq-for-c11" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>linq11 - LINQ for C++11</h1>
+
+<p><a href="http://cemdervis.github.io/linq11/">http://cemdervis.github.io/linq11/</a></p>
 
 <p>linq11 is a header-only LINQ library for C++11 with minimal dependencies.
 It neatly integrates into the STL and takes advantage of C++11 features, mainly the range-based for loop and lambda functions.</p>
@@ -61,9 +66,7 @@ It neatly integrates into the STL and takes advantage of C++11 features, mainly 
         .<span class="pl-c1">where</span>([](<span class="pl-k">const</span> Person&amp; p) { <span class="pl-k">return</span> p.<span class="pl-smi">Age</span> &gt; <span class="pl-c1">20</span>; });
 
     <span class="pl-k">for</span> (<span class="pl-k">const</span> <span class="pl-k">auto</span>&amp; p : query)
-    {
         cout &lt;&lt; p.<span class="pl-smi">Name</span> &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span>, <span class="pl-pds">"</span></span> &lt;&lt; p.<span class="pl-smi">Age</span> &lt;&lt; endl;
-    }
 
     <span class="pl-k">return</span> <span class="pl-c1">0</span>;
 }</pre></div>
@@ -84,19 +87,125 @@ P3, 22
 <li>does not use exceptions</li>
 <li>does not use boost or any other library</li>
 <li>works with everything that behaves like an STL container. So vector, maps, strings, ...</li>
-<li>tries to notify the user of errors at compile-time whenever it can (static_assert)</li>
+<li>tries to notify the user of errors at compile-time whenever it can (<code>static_assert</code>)</li>
 <li>is licensed under the MIT license</li>
 <li>uses the beloved dot operator!</li>
 </ul>
 
-<p>Please take a look at the <a href="https://github.com/cemdervis/linq11/wiki">Wiki</a> for the list of supported operators and their usage.</p>
+<h1>
+<a id="supported-linq-operators" class="anchor" href="#supported-linq-operators" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Supported LINQ Operators</h1>
+
+<ul>
+<li>
+<p><a href="https://github.com/cemdervis/linq11/wiki/Aggregate-Operators">Aggregate Operators</a></p>
+
+<ul>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Aggregate-Operators#aggregate">Aggregate</a></em></li>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Aggregate-Operators#average">Average</a></em></li>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Aggregate-Operators#count">Count</a></em></li>
+<li>
+<em><a href="https://github.com/cemdervis/linq11/wiki/Aggregate-Operators#max">Max</a></em>, <em><a href="https://github.com/cemdervis/linq11/wiki/Aggregate-Operators#min">Min</a></em>
+</li>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Aggregate-Operators#sum">Sum</a></em></li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/cemdervis/linq11/wiki/Concatenation-Operators">Concatenation Operators</a></p>
+
+<ul>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Concatenation-Operators#append">Append</a></em></li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/cemdervis/linq11/wiki/Element-Operators">Element Operators</a></p>
+
+<ul>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Element-Operators#element-at">Element At</a></em></li>
+<li>
+<em><a href="https://github.com/cemdervis/linq11/wiki/Element-Operators#first">First</a></em>, <em><a href="https://github.com/cemdervis/linq11/wiki/Element-Operators#last">Last</a></em>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/cemdervis/linq11/wiki/Filter-Operators">Filter Operators</a></p>
+
+<ul>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Filter-Operators#where">Where</a></em></li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/cemdervis/linq11/wiki/Generation-Operators">Generation Operators</a></p>
+
+<ul>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Generation-Operators#from-to">From To</a></em></li>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Generation-Operators#repeat">Repeat</a></em></li>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Generation-Operators#generate">Generate</a></em></li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/cemdervis/linq11/wiki/Join-Operators">Join Operators</a></p>
+
+<ul>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Join-Operators">Join</a></em></li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/cemdervis/linq11/wiki/Partition-Operators">Partition Operators</a></p>
+
+<ul>
+<li>
+<em><a href="https://github.com/cemdervis/linq11/wiki/Partition-Operators#skip">Skip</a></em>, <em><a href="https://github.com/cemdervis/linq11/wiki/Partition-Operators#skip-while">Skip While</a></em>
+</li>
+<li>
+<em><a href="https://github.com/cemdervis/linq11/wiki/Partition-Operators#take">Take</a></em>, <em><a href="https://github.com/cemdervis/linq11/wiki/Partition-Operators#take-while">Take While</a></em>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/cemdervis/linq11/wiki/Projection-Operators">Projection Operators</a></p>
+
+<ul>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Projection-Operators#select">Select</a></em></li>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Projection-Operators#select-many">Select Many</a></em></li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/cemdervis/linq11/wiki/Quantifier-Operators">Quantifier Operators</a></p>
+
+<ul>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Quantifier-Operators#all">All</a></em></li>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Quantifier-Operators#any">Any</a></em></li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/cemdervis/linq11/wiki/Set-Operators">Set Operators</a></p>
+
+<ul>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Set-Operators#distinct">Distinct</a></em></li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/cemdervis/linq11/wiki/Sorting-Operators">Sorting Operators</a></p>
+
+<ul>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Sorting-Operators#order-by">Order By</a></em></li>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Sorting-Operators#then-by">Then By</a></em></li>
+<li><em><a href="https://github.com/cemdervis/linq11/wiki/Sorting-Operators#reverse">Reverse</a></em></li>
+</ul>
+</li>
+</ul>
       </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/cemdervis">Cemalettin Dervis</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Linq11 maintained by <a href="https://github.com/cemdervis">cemdervis</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+
     
+
   </body>
 </html>
