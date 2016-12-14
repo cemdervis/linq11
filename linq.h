@@ -417,9 +417,7 @@ namespace linq
 
                     // Seek the first match.
                     while (Begin != End && !pred(*Begin))
-                    {
                         ++Begin;
-                    }
                 }
 
                 inline bool operator==(const iterator& o) const { return Begin == o.Begin; }
@@ -511,9 +509,7 @@ namespace linq
                     } while (Begin != End && ContainsObject(Begin));
 
                     if (Begin != End)
-                    {
                         EncounteredObjects->push_back(Begin);
-                    }
 
                     return *this;
                 }
@@ -523,12 +519,8 @@ namespace linq
                     const auto& itVal = *it;
 
                     for (size_t i = 0; i < EncounteredObjects->size(); ++i)
-                    {
                         if (*EncounteredObjects->at(i) == itVal)
-                        {
                             return true;
-                        }
-                    }
 
                     return false;
                 }
@@ -691,14 +683,10 @@ namespace linq
                         do
                         {
                             if (!first)
-                            {
                                 ++Pos;
-                            }
 
                             if (Pos == End)
-                            {
                                 break;
-                            }
 
                             RetRange = transform(*Pos);
                             RetBegin = RetRange.begin();
@@ -822,10 +810,9 @@ namespace linq
             inline iterator begin() const
             {
                 PrevIterators.clear();
+                
                 for (auto beg = Prev.begin(), end = Prev.end(); beg != end; ++beg)
-                {
                     PrevIterators.push_back(beg);
-                }
 
                 return iterator(&PrevIterators, PrevIterators.size() - 1);
             }
@@ -941,9 +928,7 @@ namespace linq
 
                     const auto& pred = *Parent->Predicate;
                     if (Begin != End && !pred(*Begin))
-                    {
                         Begin = End;
-                    }
 
                     return *this;
                 }
@@ -1063,9 +1048,7 @@ namespace linq
                     : Begin(begin)
                 {
                     while (Begin != end && predicate(*Begin))
-                    {
                         ++Begin;
-                    }
                 }
 
                 inline bool operator==(const iterator& o) const { return Begin == o.Begin; }
@@ -1137,13 +1120,9 @@ namespace linq
                 inline iterator& operator++()
                 {
                     if (MyBegin != MyEnd)
-                    {
                         ++MyBegin;
-                    }
                     else
-                    {
                         ++OtherBegin;
-                    }
 
                     return *this;
                 }
@@ -1335,9 +1314,7 @@ namespace linq
                     const auto& keySelectorB = *Parent->KeySelectorB;
 
                     if (preIncrementOther)
-                    {
                         ++OtherPos;
-                    }
 
                     while (Pos != End)
                     {
@@ -1359,14 +1336,10 @@ namespace linq
 
                         // Start over in the other range if it's finished.
                         if (OtherPos == OtherEnd)
-                        {
                             OtherPos = OtherBegin;
-                        }
 
                         if (!shouldContinue)
-                        {
                             break;
-                        }
 
                         ++Pos;
                     }
@@ -1459,9 +1432,7 @@ namespace linq
             {
                 SortedValues.clear();
                 for (const auto& val : Prev)
-                {
                     SortedValues.push_back(val);
-                }
                 
                 std::sort(SortedValues.begin(), SortedValues.end(),
                     [this](const container_element_t& a, const container_element_t& b)
@@ -1482,15 +1453,9 @@ namespace linq
                 const auto& keySelector = *KeySelector;
                 const auto& aVal = keySelector(a);
                 const auto& bVal = keySelector(b);
-
-                if (SortDirection == sort_direction::ascending)
-                {
-                    return aVal < bVal;
-                }
-                else // descending
-                {
-                    return bVal < aVal;
-                }
+                
+                return (SortDirection == sort_direction::ascending)?
+                     (aVal < bVal) : /*descending:*/ (bVal < aVal);
             }
 
         private:
@@ -1557,9 +1522,7 @@ namespace linq
             {
                 SortedValues.clear();
                 for (const auto& val : Prev)
-                {
                     SortedValues.push_back(val);
-                }
 
                 std::sort(SortedValues.begin(), SortedValues.end(),
                     [this](const container_element_t& a, const container_element_t& b)
@@ -1582,22 +1545,12 @@ namespace linq
                 const auto& bVal = keySelector(b);
 
                 if (Prev.compare_keys(a, b))
-                {
                     return true;
-                }
                 else if (Prev.compare_keys(b, a))
-                {
                     return false;
-                }
-
-                if (SortDirection == sort_direction::ascending)
-                {
-                    return aVal < bVal;
-                }
-                else // descending
-                {
-                    return bVal < aVal;
-                }
+                
+                return (SortDirection == sort_direction::ascending)?
+                     (aVal < bVal) : /*descending:*/ (bVal < aVal);
             }
 
         private:
@@ -1726,17 +1679,10 @@ namespace linq
                     if (Step < T())
                     {
                         if (Value < Bound)
-                        {
                             Value = Bound;
-                        }
                     }
-                    else
-                    {
-                        if (Value > Bound)
-                        {
-                            Value = Bound;
-                        }
-                    }
+                    else if (Value > Bound)
+                       Value = Bound;
 
                     return Value;
                 }
@@ -1755,15 +1701,11 @@ namespace linq
             {
                 // Unsign the step value.
                 if (Step < T())
-                {
                     Step = -Step;
-                }
 
                 // Invert the step value if we're going backwards.
                 if (Start > End)
-                {
                     Step = -Step;
-                }
             }
 
             inline iterator begin() const
@@ -1813,13 +1755,13 @@ namespace linq
                 // We only care about whether two generator_return_values are empty or not.
                 // If the iterator has an empty one, it will match the one from the last
                 // iterator, which indicates the end of iteration.
-                return IsEmpty == o.IsEmpty;
+                return (IsEmpty == o.IsEmpty);
             }
 
             inline bool operator!=(const generator_return_value& o) const
             {
                 // Same as in operator==.
-                return IsEmpty != o.IsEmpty;
+                return (IsEmpty != o.IsEmpty);
             }
 
             T Value;
@@ -2058,9 +2000,7 @@ namespace linq
                     first = false;
                 }
                 else
-                {
                     sum += p;
-                }
             }
 
             return sum;
@@ -2081,9 +2021,7 @@ namespace linq
                     first = false;
                 }
                 else if (p < min)
-                {
                     min = p;
-                }
             }
 
             return min;
@@ -2104,9 +2042,7 @@ namespace linq
                     first = false;
                 }
                 else if (max < p)
-                {
                     max = p;
-                }
             }
 
             return max;
@@ -2135,9 +2071,7 @@ namespace linq
                     first = false;
                 }
                 else
-                {
                     sum = func(sum, p);
-                }
             }
 
             return sum;
@@ -2148,9 +2082,7 @@ namespace linq
             base_range<TMy, TOutput>::first(const output_t& defaultValue) const
         {
             for (const auto& p : static_cast<const TMy&>(*this))
-            {
                 return p;
-            }
 
             return defaultValue;
         }
@@ -2161,12 +2093,8 @@ namespace linq
             base_range<TMy, TOutput>::first(const TPredicate& predicate, const output_t& defaultValue) const
         {
             for (const auto& p : static_cast<const TMy&>(*this))
-            {
                 if (predicate(p))
-                {
                     return p;
-                }
-            }
 
             return defaultValue;
         }
@@ -2178,9 +2106,7 @@ namespace linq
             output_t ret = defaultValue;
 
             for (const auto& p : static_cast<const TMy&>(*this))
-            {
                 ret = p;
-            }
 
             return ret;
         }
@@ -2193,12 +2119,8 @@ namespace linq
             output_t ret = defaultValue;
 
             for (const auto& p : static_cast<const TMy&>(*this))
-            {
                 if (predicate(p))
-                {
                     ret = p;
-                }
-            }
 
             return ret;
         }
@@ -2208,12 +2130,8 @@ namespace linq
         inline bool base_range<TMy, TOutput>::any(const TPredicate& predicate) const
         {
             for (const auto& p : static_cast<const TMy&>(*this))
-            {
                 if (predicate(p))
-                {
                     return true;
-                }
-            }
 
             return false;
         }
@@ -2223,12 +2141,8 @@ namespace linq
         inline bool base_range<TMy, TOutput>::all(const TPredicate& predicate) const
         {
             for (const auto& p : static_cast<const TMy&>(*this))
-            {
                 if (!predicate(p))
-                {
                     return false;
-                }
-            }
 
             return true;
         }
@@ -2239,9 +2153,7 @@ namespace linq
             size_t ret = 0;
 
             for (const auto& p : static_cast<const TMy&>(*this))
-            {
                 ++ret;
-            }
 
             return ret;
         }
@@ -2253,12 +2165,8 @@ namespace linq
             size_t ret = 0;
 
             for (const auto& p : static_cast<const TMy&>(*this))
-            {
                 if (predicate(p))
-                {
                     ++ret;
-                }
-            }
 
             return ret;
         }
@@ -2272,9 +2180,7 @@ namespace linq
             for (const auto& p : static_cast<const TMy&>(*this))
             {
                 if (i >= index)
-                {
                     return p;
-                }
 
                 ++i;
             }
@@ -2289,9 +2195,7 @@ namespace linq
             std::vector<output_t> vec;
 
             for (const auto& p : static_cast<const TMy&>(*this))
-            {
                 vec.push_back(p);
-            }
 
             return vec;
         }
